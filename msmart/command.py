@@ -345,7 +345,7 @@ class appliance_response:
             if int((self.data[11] - 50) / 2) < -19 or int((self.data[11] - 50) / 2) > 50:
                 return 0xff
             else:
-                indoorTempInteger = int((self.data[11] - 50) / 2)
+                indoorTempInteger = (self.data[11] - 50) / 2
                 indoorTemperatureDot = getBits(self.data, 15, 0, 3)
                 indoorTempDecimal = indoorTemperatureDot * 0.1
             if self.data[11] > 49:
