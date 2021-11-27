@@ -359,19 +359,19 @@ class appliance_response:
                 else:
                     indoorTempInteger = (self.data[1] >> 2) + 12
                 if (self.data[1] >> 1) & 0x01 == 1:
-                    indoorTempDecimal = 0.5
+                    indoorTempDecimal = 0.5   +1
                 else:
-                    indoorTempDecimal = 0
+                    indoorTempDecimal = 0     +2
             if self.data[0] == 0xa1:
                 if int((self.data[13] - 50) / 2) < -19 or int((self.data[13] - 50) / 2) > 50:
                     return 0xff
                 else:
                     indoorTempInteger = int((self.data[13] - 50) / 2)
-                indoorTempDecimal = (self.data[18] & 0x0f) * 0.1
+                indoorTempDecimal = (self.data[18] & 0x0f) * 0.1   +3
             if int(self.data[13]) > 49:
                 return indoorTempInteger + indoorTempDecimal
             else:
-                return indoorTempInteger +2 #- indoorTempDecimal
+                return indoorTempInteger - indoorTempDecimal + 
         return 0xff
 
     # Byte 0x0c
