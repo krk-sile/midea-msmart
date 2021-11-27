@@ -343,45 +343,34 @@ class appliance_response:
     def indoor_temperature(self):
         if self.data[0] == 0xc0:
             if int((self.data[11] - 50) / 2) < -19 or int((self.data[11] - 50) / 2) > 50:
-                print("test1")
                 return 0xff
             else:
                 indoorTempInteger = int((self.data[11] - 50) / 2)
                 indoorTemperatureDot = getBits(self.data, 15, 0, 3)
                 indoorTempDecimal = indoorTemperatureDot * 0.1
-                print("test2")
-                print(indoorTemperatureDot)
             if self.data[11] > 49:
-                print("test3")
                 return indoorTempInteger + indoorTempDecimal
             else:
-                print("test33")
                 return indoorTempInteger - indoorTempDecimal
         if self.data[0] == 0xa0 or self.data[0] == 0xa1:
             if self.data[0] == 0xa0:
                 if (self.data[1] >> 2) - 4 == 0:
-                    print("test4")
                     indoorTempInteger = -1
                 else:
-                    print("test5")
                     indoorTempInteger = (self.data[1] >> 2) + 12
                 if (self.data[1] >> 1) & 0x01 == 1:
-                    print("test5")
                     indoorTempDecimal = 0.5
                 else:
-                    print("test6")
                     indoorTempDecimal = 0
             if self.data[0] == 0xa1:
                 if int((self.data[13] - 50) / 2) < -19 or int((self.data[13] - 50) / 2) > 50:
                     return 0xff
                 else:
-                    print("test7")
                     indoorTempInteger = int((self.data[13] - 50) / 2)
                 indoorTempDecimal = (self.data[18] & 0x0f) * 0.1
             if int(self.data[13]) > 49:
                 return indoorTempInteger + indoorTempDecimal
             else:
-                print("test8")
                 return indoorTempInteger - indoorTempDecimal
         return 0xff
 
