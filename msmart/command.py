@@ -350,10 +350,12 @@ class appliance_response:
                 indoorTemperatureDot = getBits(self.data, 15, 0, 3)
                 indoorTempDecimal = indoorTemperatureDot * 0.1
                 print("test2")
+                print(indoorTempDecimal)
             if self.data[11] > 49:
                 return indoorTempInteger + indoorTempDecimal
                 print("test3")
             else:
+                print("test33")
                 return indoorTempInteger - indoorTempDecimal
         if self.data[0] == 0xa0 or self.data[0] == 0xa1:
             if self.data[0] == 0xa0:
