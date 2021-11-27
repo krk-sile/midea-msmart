@@ -352,8 +352,8 @@ class appliance_response:
                 print("test2")
                 print(indoorTempDecimal)
             if self.data[11] > 49:
-                return indoorTempInteger + indoorTempDecimal
                 print("test3")
+                return indoorTempInteger + indoorTempDecimal
             else:
                 print("test33")
                 return indoorTempInteger - indoorTempDecimal
