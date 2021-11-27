@@ -371,7 +371,7 @@ class appliance_response:
             if int(self.data[13]) > 49:
                 return indoorTempInteger + indoorTempDecimal
             else:
-                return indoorTempInteger - indoorTempDecimal
+                return indoorTempInteger #- indoorTempDecimal
         return 0xff
 
     # Byte 0x0c
