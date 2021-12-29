@@ -123,7 +123,8 @@ class air_conditioning_device(device):
         High = 80
         Medium = 60
         Low = 40
-        Silent = 20
+        Lower = 20
+        Silent = 8
 
         @staticmethod
         def list():
